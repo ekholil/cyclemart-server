@@ -28,7 +28,7 @@ async function run() {
       const reviewCollection = client.db("cyclemart").collection("reviews")
       const usersCollection = client.db("cyclemart").collection("users")
       
-     // find all spots
+     // find all products
       app.get('/products', async(req, res) => {
         const result = await cycleCollection.find({}).toArray()
         res.send(result) 
@@ -120,7 +120,7 @@ async function run() {
       app.delete('/products/:id', async(req, res) => {
         const id = req.params.id;
         const query = {_id : ObjectId(id)}
-        const result = await ordersCollection.deleteOne(query)
+        const result = await cycleCollection.deleteOne(query)
         console.log(result)
         res.json(result)
       })
