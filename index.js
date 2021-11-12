@@ -49,11 +49,11 @@ async function run() {
       })
     
       // //post api
-      // app.post('/addspot', async(req, res) => {
-      //   const data = req.body;
-      //   const result = await spotCollection.insertOne(data)
-      //   res.json(result)
-      // })
+      app.post('/addproduct', async(req, res) => {
+        const data = req.body;
+        const result = await cycleCollection.insertOne(data)
+        res.json(result)
+      })
       // //post api for buy now
       app.post('/orders', async(req, res) => {
         const data = req.body;
@@ -109,13 +109,13 @@ async function run() {
         const result = await ordersCollection.deleteOne(query)
         res.json(result)
       })
-      // //delete api from manage booking
-      // app.delete('/deletebooking/:id', async(req, res) => {
-      //   const id = req.params.id;
-      //   const query = {_id : ObjectId(id)}
-      //   const result = await bookedCollection.deleteOne(query)
-      //   res.json(result)
-      // })
+      // //delete api from manage order
+      app.delete('/deleteorder/:id', async(req, res) => {
+        const id = req.params.id;
+        const query = {_id : ObjectId(id)}
+        const result = await ordersCollection.deleteOne(query)
+        res.json(result)
+      })
       // // update
       app.put('/updatestatus/:id', async(req, res) => {
         const id = req.params.id;
